@@ -1,0 +1,10 @@
+{% extends "xyzWypozyczalniaBundle::layout.html.twig" %}
+
+{% block menu %}
+    <ul class="list-group">
+        <li class="list-group-item"><a href="{{ path('wypozyczalnia_homepage') }}">Strona Główna</a></li>
+        {% if is_granted('ROLE_USER') %}
+            <li class="list-group-item"><a href="{{ path('wypozyczalnia_uzytkownik_zamowienia') }}">Moje zamówienia</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}

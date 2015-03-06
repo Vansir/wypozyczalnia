@@ -1,0 +1,20 @@
+{% extends "xyzWypozyczalniaBundle::sidebar.html.twig" %}
+
+{% block header %}
+        <h1>Nowości w wypożyczalni</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="list-group">
+    {% for film in filmy %}
+        <a href="{{ path('wypozyczalnia_film_wyswietl', {'id': film.id}) }}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ film.tytul }}({{ film.rokPremiery|date('Y') }})</h4>
+            <p class="list-group-item-text" style="overflow:hidden">
+                <img style="float:left;margin-right: 10px;" src="{{ film.okladka }}" height="50" width="50" />
+
+                <span style="float:left"></span>{{ film.opis }}
+            </p>
+        </a>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+wypozyczalnia_homepage:
+  path: /
+  defaults: { _controller: xyzWypozyczalniaBundle:Home:index }
+
+wypozyczalnia_film_wyswietl:
+  path:   /filmy/{id}
+  defaults: { _controller: xyzWypozyczalniaBundle:Film:wyswietlFilm }
+
+wypozyczalnia_film_zamowienie:
+  path: /zamowienie/{id}
+  defaults: { _controller: xyzWypozyczalniaBundle:Zamowienie:zamowFilm }
+
+wypozyczalnia_uzytkownik_zamowienia:
+  path: /zamowienia
+  defaults: { _controller: xyzWypozyczalniaBundle:Zamowienie:wszystkieZamowienia }
+

@@ -1,0 +1,19 @@
+{% extends "xyzWypozyczalniaBundle::sidebar.html.twig" %}
+
+{% block header %}
+    <h1>xyz</h1>
+{% endblock %}
+
+
+{% block content %}
+
+    <div  class="row">
+        <h2>Informacje o zamówieniu</h2>
+        <h4>{{ zamowienie.film.tytul }}</h4>
+        <h5>Cena: {{ zamowienie.cena }} zł</h5>
+        <h5>Termin płatności: 14 dni(po nie otrzymaniu płatności usuwamy zamówienie z systemu)</h5>
+        <h5>Płatności proszę przelewać na konto 90 9944 4332 ...</h5>
+
+    </div>
+
+{% endblock %}

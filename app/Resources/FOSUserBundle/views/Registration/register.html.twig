@@ -1,0 +1,18 @@
+{% extends "xyzWypozyczalniaBundle::sidebar.html.twig" %}
+
+{% block header %}
+    <h1>xyz</h1>
+{% endblock %}
+
+{% block content %}
+
+    {% block fos_user_content %}
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+            </div>
+        </form>
+    {% endblock fos_user_content %}
+
+{% endblock %}

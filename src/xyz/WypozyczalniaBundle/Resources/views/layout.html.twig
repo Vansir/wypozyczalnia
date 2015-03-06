@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Wypożyczalnia filmów xyz</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/xyzwypozyczalnia/css/bootstrap.min.css') }}">
+</head>
+<body>
+<div class="container">
+    <header class="row">
+        <div class="page-header">
+            {% block header %}
+            {% endblock %}
+        </div>
+    </header>
+    {% if is_granted('ROLE_USER') %}
+        <div class="row">
+            <p>
+                Jesteś zalogowany jako {{app.user.username}}.
+                <a href="{{path('fos_user_security_logout')}}" class="btn btn-primary">Wyloguj</a>
+            </p>
+        </div>
+    {% else %}
+        <p>
+            Nie jesteś zalogowany -
+            <a href="{{path('fos_user_security_login')}}" class="btn btn-primary">Zaloguj</a>
+            Jeśli nie masz konta - <a href="{{path('fos_user_registration_register')}}" class="btn btn-primary">Zarejestruj się</a>
+        </p>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-4">
+            {% block menu %}
+            {% endblock %}
+        </div>
+        <div class="col-md-8">
+            {% block content %}
+                {% block fos_user_content %}
+                {% endblock %}
+            {% endblock %}
+        </div>
+    </div>
+    <footer class="row">
+        <p>(c) Copyright xyz</p>
+    </footer>
+</div>
+</body>
+</html>

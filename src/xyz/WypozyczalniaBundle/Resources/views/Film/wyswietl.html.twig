@@ -1,0 +1,46 @@
+{% extends "xyzWypozyczalniaBundle::sidebar.html.twig" %}
+
+{% block header %}
+    <h1>xyz</h1>
+{% endblock %}
+
+{% block content %}
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" height="150" width="150" src="{{ film.okladka }}" alt="{{ film.tytul }}">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{ film.tytul }}({{ film.rokPremiery|date('Y') }})</h4>
+                <p>{{ film.opis }}</p>
+                <a class="btn btn-success" href="{{ path('wypozyczalnia_film_zamowienie', { 'id': film.id }) }}">Wypożycz({{ film.cena }}zł)</a>
+            </div>
+        </div>
+        <div>
+            <h3>Aktorzy</h3>
+            <p>
+                {% for aktor in film.aktorzy %}
+                    {{ aktor.aktor }},
+                {% endfor %}
+            </p>
+        </div>
+        <hr />
+        <div>
+            <h3>Recenzje</h3>
+            {% if is_granted('ROLE_USER') %}
+            <form class="form-horizontal" method="POST">
+               {{ form_widget(form) }}
+            {{ form_end(form) }}
+            {% endif %}
+
+            <div class="list-group" style="margin-top: 20px;">
+                {% for recenzja in film.recenzje %}
+                    <span class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ recenzja.uzytkownik.username }} - {{ recenzja.dataUtworzenia|date('Y-m-d') }}</h4>
+                        <p class="list-group-item-text">{{ recenzja.tekst }}</p>
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}

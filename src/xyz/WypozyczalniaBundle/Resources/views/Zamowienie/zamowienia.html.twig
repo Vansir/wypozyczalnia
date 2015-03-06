@@ -1,0 +1,32 @@
+{% extends "xyzWypozyczalniaBundle::sidebar.html.twig" %}
+
+{% block header %}
+    <h1>xyz - moje zamówienia</h1>
+{% endblock %}
+
+
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Film</th>
+            <th>Cena</th>
+            <th>Status</th>
+        </tr>
+        {% for zamowienie in uzytkownik.zamowienia %}
+            <tr>
+                <td>{{ zamowienie.id }}</td>
+                <td>{{ zamowienie.film.tytul }}</td>
+                <td>{{ zamowienie.cena }}</td>
+                {% if zamowienie.status == 0 %}
+                    <td>w trakcie</td>
+                {% else %}
+                    <td>zaplacone</td>
+                {% endif %}
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

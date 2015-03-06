@@ -1,0 +1,39 @@
+<?php
+
+namespace xyz\WypozyczalniaBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Aktor
+ *
+ * @ORM\Table()
+ * @ORM\Entity()
+ */
+class Aktor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aktor", type="string", length=255)
+     */
+    private $aktor;
+
+
+    /**
+    * @ORM\ManyToMany(targetEntity="Film", mappedBy="aktorzy")
+    */
+    private $filmy;
+
+
+}
